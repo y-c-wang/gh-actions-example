@@ -1,0 +1,44 @@
+# Reference:
+#   https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+#
+# Summary:
+#   This example defines inputs called logLevel, tags, and environment. You pass 
+#   values for these inputs to the workflow when you run it. This workflow then 
+#   prints the values to the log, using the inputs.logLevel, inputs.tags, and 
+#   inputs.environment context properties.
+
+name: Workflow Dispatch Example 1
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      comments:
+        description: 'Comments'
+        required: false
+
+jobs:
+  log-the-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Actor: $ACTOR"
+          echo "Log level: $LEVEL"
+          echo "Tags: $TAGS"
+          echo "Comments: $COMMENTS"
+        env:
+          ACTOR: ${{ github.actor }}
+          LEVEL: ${{ inputs.logLevel }}
+          TAGS: ${{ inputs.tags }}
+          COMMENTS: ${{ inputs.comments }}

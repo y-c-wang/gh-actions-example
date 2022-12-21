@@ -1,0 +1,23 @@
+# Reference:
+#   https://stackoverflow.com/questions/60942067/get-current-date-and-time-in-github-workflows
+#   https://stackoverflow.com/questions/58139406/only-run-job-on-specific-branch-with-github-actions
+
+name: Get Date
+on:
+  # on push to all branches except master
+  push:
+    branches:
+      - '*'
+      - '!dev'
+jobs:
+  Get-Date:
+    name: Get current date
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current date
+        id: date
+        run: echo "name=date::$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: Test with environment variables
+        run: echo $TAG_NAME
+        env:
+          TAG_NAME: tag-${{ steps.date.outputs.date }}

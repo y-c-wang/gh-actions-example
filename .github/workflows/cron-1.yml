@@ -1,0 +1,19 @@
+# Reference:
+#   https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+#
+# Summary:
+#   This example triggers the workflow every day at 5:30 and 17:30 UTC.
+
+name: Cron Job Example 1
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: '30 5,17 * * *'
+
+jobs:
+  test_schedule_1:
+    name: Test Schedule_1
+    runs-on: ubuntu-latest
+    steps:
+      - name: ci-cron-1
+        run: echo "ci-cron-1"

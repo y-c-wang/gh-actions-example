@@ -1,0 +1,14 @@
+# References:
+#   https://github.com/orgs/community/discussions/26245
+
+name: "Hello My Actions"
+description: "Greet someone"
+author: "ycwang.cs@github.com"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+
+branding:
+  icon: "mic"
+  color: "purple"

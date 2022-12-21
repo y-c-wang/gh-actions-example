@@ -1,0 +1,15 @@
+# References:
+#   https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-using-an-action-in-the-same-repository-as-the-workflow
+
+name: Show Tree
+on: workflow_dispatch
+jobs:
+  show_tree:
+    name: Show tree
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Show tree
+        run: tree
