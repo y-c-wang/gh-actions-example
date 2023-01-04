@@ -1,7 +1,7 @@
 # References:
 #   https://github.com/marketplace/actions/delete-workflow-runs
 
-name: Delete old workflow runs
+name: Delete workflow runs
 on:
   workflow_dispatch:
     inputs:
