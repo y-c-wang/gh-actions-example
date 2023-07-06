@@ -1,0 +1,13 @@
+name: run CI
+on: 
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Into repo
+        uses: actions/checkout@v3
+      - name: cat tmp4 in tmp
+        run: cat tmp/tmp4
